@@ -1,0 +1,26 @@
+# Values for type component of FCGIHeader
+FCGI_BEGIN_REQUEST = 1
+FCGI_ABORT_REQUEST = 2
+FCGI_END_REQUEST = 3
+FCGI_PARAMS = 4
+FCGI_STDIN = 5
+FCGI_STDOUT = 6
+FCGI_STDERR = 7
+FCGI_DATA = 8
+FCGI_GET_VALUES = 9
+FCGI_GET_VALUES_RESULT = 10
+FCGI_UNKNOWN_TYPE = 11
+
+# Mask for flags component of FCGIBeginRequestBody
+FCGI_KEEP_CONN = 1
+
+# Values for role component of FCGIBeginRequestBody
+FCGI_RESPONDER = 1
+FCGI_AUTHORIZER = 2
+FCGI_FILTER = 3
+
+# Values for protocol_status component of FCGIEndRequestBody
+FCGI_REQUEST_COMPLETE = 0
+FCGI_CANT_MPX_CONN = 1
+FCGI_OVERLOADED = 2
+FCGI_UNKNOWN_ROLE = 3

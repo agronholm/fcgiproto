@@ -1,0 +1,6 @@
+[run]
+source = fcgiproto
+branch = 1
+
+[report]
+show_missing = true
