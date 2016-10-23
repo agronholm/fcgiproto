@@ -13,3 +13,13 @@ install: pip install tox-travis coveralls
 script: tox
 
 after_success: coveralls
+
+deploy:
+  provider: pypi
+  user: agronholm
+  password:
+    secure: irLJvcMUgiM0Q+0mXEze2JtIJEloFdehvICmYevGMmPm/01rR//iM+WFjya754EwLrJwNYULhxAQU71ysVTf47cNu7QGL/jmQcGIpXzBNm2KOfhFiWASN8srPXHkiUn98OpQypuU64zvUiAYPYz/73G6x1qHYd2lGGfAeunXIzliUlB4f9Vap7U9LiUmRVltIVbWqT0oVFZZItsVT5pBiGBWOhTBjlZ2P3aR71eJ7S3PFYs/wDAzsobeaY7AmG7D+2eOgTt+tb7zyhQXTMD+5o2UOCJfzxxUGEf804zPQzIjuKD8XJX0TBTuKsPlB8NNt3Kwqc2KL2vEglpMoO7MtlqT8DJeecxLr72zoos5Z0KEejwgPyQAUy2ICV36t73Cu+HPnDA9LJC847PmdkU/JDpRnIqpaALorNzBKiCB6H8bly3PcQjaoLiTqhfcXnvvuk3lqWBbt4eIThdshndD5TE2oYfZhK6t4p50CwOxLpxM4fTqh7H9KiGPIjPzjFyb6nuqSCEPcv8PFHtQ0Rn9QprVyny+iW/BRtDahM18+htoBnkjpiUAwIOuBmNZpPEmXQ7w6XU7LZ/fWzGvwbgBPGuvwSxh2AtmrNFSQPSDZK73lwX6rKtEmlSaWWUPAk4tIZbFk7ZGC6U9hv28OhV/bm7ZPc4sVCViDN1qKT9EIsQ=
+  distributions: sdist bdist_wheel
+  on:
+    tags: true
+    repo: agronholm/fcgiproto
