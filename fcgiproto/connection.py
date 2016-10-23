@@ -99,7 +99,7 @@ class FastCGIConnection(object):
         payload = bytearray()
 
         if status:
-            payload.extend((u'Status:%d\n' % status).encode('ascii'))
+            payload.extend((u'Status: %d\r\n' % status).encode('ascii'))
 
         for key, value in headers:
             if not isinstance(key, bytes):
@@ -108,9 +108,9 @@ class FastCGIConnection(object):
                 raise TypeError('header values must be bytestrings, not %s' %
                                 value.__class__.__name__)
 
-            payload.extend(key + b':' + value + b'\n')
+            payload.extend(key + b': ' + value + b'\r\n')
 
-        payload.extend(b'\n')
+        payload.extend(b'\r\n')
         record = FCGIStdout(request_id, payload)
         self._send_record(record)
 
