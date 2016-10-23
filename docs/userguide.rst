@@ -117,10 +117,11 @@ The ``examples`` directory in the project source tree contains example code for 
 I/O frameworks to get you started. Just run any of the server scripts and it will start a FastCGI
 server listening on port 9500.
 
-Since FastCGI requires a front-end server, a Docker script and nginx site configuration file have
-been provided as a convenience. Just run ``nginx_docker.sh`` from the ``examples`` directory and
-navigate to http://127.0.0.1/ to see the result. The example code displays a web page that shows
-the FastCGI parameters and the request body (if any).
+Since FastCGI requires a front-end server, a Docker script and configuration files for both nginx
+and Apache HTTPd have been provided as a convenience. Just run either ``nginx_docker.sh`` or
+``apache_docker.sh`` from the ``examples`` directory and navigate to http://127.0.0.1/ to see the
+result. The example code displays a web page that shows the FastCGI parameters and the request body
+(if any).
 
 .. note:: You may have to make adjustments to the configuration if your Docker interface address or
     desired host HTTP port don't match the provided configuration.
