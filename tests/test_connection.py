@@ -37,9 +37,9 @@ def test_responder_request(conn, send_status):
 
     headers = [(b'Content-Length', b'7'), (b'Content-Type', b'text/plain')]
     conn.send_headers(1, headers, status=200 if send_status else None)
-    expected_body = b'Content-Length:7\nContent-Type:text/plain\n\n'
+    expected_body = b'Content-Length: 7\r\nContent-Type: text/plain\r\n\r\n'
     if send_status:
-        expected_body = b'Status:200\n' + expected_body
+        expected_body = b'Status: 200\r\n' + expected_body
     assert conn.data_to_send() == \
         FCGIStdout(1, expected_body).encode()
 
@@ -67,7 +67,8 @@ def test_authorizer_request():
     headers = [(b'Content-Length', b'13'), (b'Content-Type', b'text/plain')]
     conn.send_headers(1, headers, status=403)
     assert conn.data_to_send() == \
-        FCGIStdout(1, b'Status:403\nContent-Length:13\nContent-Type:text/plain\n\n').encode()
+        FCGIStdout(1, b'Status: 403\r\nContent-Length: 13\r\n'
+                      b'Content-Type: text/plain\r\n\r\n').encode()
 
     conn.send_data(1, b'Access denied', end_request=True)
     assert conn.data_to_send() == \
@@ -106,7 +107,8 @@ def test_filter_request():
     headers = [(b'Content-Length', b'9'), (b'Content-Type', b'application/octet-stream')]
     conn.send_headers(1, headers, status=404)
     assert conn.data_to_send() == \
-        FCGIStdout(1, b'Status:404\nContent-Length:9\nContent-Type:application/octet-stream\n\n').\
+        FCGIStdout(1, b'Status: 404\r\nContent-Length: 9\r\n'
+                      b'Content-Type: application/octet-stream\r\n\r\n').\
         encode()
 
     conn.send_data(1, b'file data', end_request=True)
