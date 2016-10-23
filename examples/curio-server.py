@@ -34,7 +34,7 @@ def handle_request(conn, request_id, params, content):
 """ % (fcgi_params, content)).encode('utf-8')
     headers = [
         (b'Content-Length', str(len(response)).encode('ascii')),
-        (b'Content-Type', b'text/html')
+        (b'Content-Type', b'text/html; charset=UTF-8')
     ]
     conn.send_headers(request_id, headers, 200)
     conn.send_data(request_id, response, end_request=True)

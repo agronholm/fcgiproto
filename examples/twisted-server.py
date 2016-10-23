@@ -50,7 +50,7 @@ class FastCGIProtocol(Protocol):
 """ % (fcgi_params, content)).encode('utf-8')
         headers = [
             (b'Content-Length', str(len(response)).encode('ascii')),
-            (b'Content-Type', b'text/html')
+            (b'Content-Type', b'text/html; charset=UTF-8')
         ]
         self.conn.send_headers(request_id, headers, 200)
         self.conn.send_data(request_id, response, end_request=True)
