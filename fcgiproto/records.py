@@ -182,6 +182,7 @@ class FCGIEndRequest(FCGIRecord):
         content = self.struct.pack(self.app_status, self.protocol_status)
         return self.encode_header(content) + content
 
+
 record_classes = {cls.record_type: cls for cls in globals().values()  # type: ignore
                   if isinstance(cls, type) and issubclass(cls, FCGIRecord)
                   and cls.record_type}  # type: ignore
